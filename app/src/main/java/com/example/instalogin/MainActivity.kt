@@ -1,6 +1,5 @@
 package com.example.instalogin
 
-import android.R.style.Theme
 import android.content.Intent
 import androidx.compose.ui.platform.LocalContext
 import android.os.Bundle
@@ -11,13 +10,19 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,13 +36,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-                Greeting()
+            InstaLogin()
         }
     }
 }
 
 @Composable
-fun Greeting() {
+fun InstaLogin() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,66 +51,67 @@ fun Greeting() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
+        //language SelectionList
         Text(
             text = "English (India)",
             color = Color.LightGray,
             fontSize = 14.sp
         )
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(80.dp))
 
+        //Insta Logo
         Image(
             painter = painterResource(id = R.drawable.instagram),
             contentDescription = "Instagram Logo",
-            modifier = Modifier.size(80.dp)
+            modifier = Modifier
+                .size(60.dp)
+                .border(
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.background),
+                    shape = RoundedCornerShape(12.dp)
+                )
         )
 
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(80.dp))
 
-        Box(
+        //TextField for Username, email address or mobile number
+        var username by remember { mutableStateOf("") }
+
+        TextField(
+            value = username,
+            onValueChange = { username = it },
+            placeholder = {
+                Text("Username, email address or mobile number")
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
-                .border(
-                    width = 1.dp,
-                    color = Color.DarkGray,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .padding(horizontal = 16.dp),
-            contentAlignment = Alignment.CenterStart
-        ) {
-            Text(
-                text = "Username, email address or mobile number",
-                color = Color.Gray,
-                fontSize = 14.sp
-            )
-        }
+                .border(1.dp, Color.DarkGray, RoundedCornerShape(8.dp))
+        )
+
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        Box(
+        //TextField for Password
+        var password by remember { mutableStateOf("") }
+
+        TextField(
+            value = password,
+            onValueChange = { password = it },
+            placeholder = {
+                Text("Password")
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
-                .border(
-                    width = 1.dp,
-                    color = Color.DarkGray,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .padding(horizontal = 16.dp),
-            contentAlignment = Alignment.CenterStart
-        ) {
-            Text(
-                text = "Password",
-                color = Color.Gray,
-                fontSize = 14.sp
-            )
-        }
+                .border(1.dp, Color.DarkGray, RoundedCornerShape(8.dp))
+        )
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(12.dp))
 
+        //Login Button
         Button(
             onClick = { },
             modifier = Modifier
@@ -120,32 +126,28 @@ fun Greeting() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        //Clickable Text For Forgotten Password
         val context = LocalContext.current
-        Button(
-            onClick = {
+        Text(
+            text = "Forgotten password?",
+            color = Color(0xFF0095F6),
+            fontSize = 14.sp,
+            modifier = Modifier.clickable {
                 val intent = Intent(context, MainActivity2::class.java)
                 context.startActivity(intent)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF121212)
-            )
-        ) {
-            Text(
-                text = "Forgotten password?",
-                color = Color(0xFF0095F6),
-                fontSize = 14.sp
-            )
-        }
+            }
+        )
 
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.height(150.dp))
 
+        //Button Create new Account
         Button(
             onClick = { },
             modifier = Modifier.fillMaxWidth(),
-            border = BorderStroke(1.dp, Color(0xFF0095F6))
+            border = BorderStroke(1.dp, Color(0xFF0095F6)),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.background
+            )
         ) {
             Text(
                 text = "Create new account",
@@ -155,6 +157,7 @@ fun Greeting() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        //Meta Logo Or Text
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -164,27 +167,22 @@ fun Greeting() {
             Image(
                 painter = painterResource(id = R.drawable.meta),
                 contentDescription = "Meta logo",
-                modifier = Modifier.size(12.dp)
+                modifier = Modifier.size(15.dp)
             )
 
-            Spacer(modifier = Modifier.width(6.dp))
+            Spacer(modifier = Modifier.width(4.dp))
 
             Text(
                 text = "Meta",
-                color = Color.Gray,
-                fontSize = 12.sp
+                color = Color.DarkGray,
+                fontSize = 15.sp
             )
         }
     }
 }
 
-@Composable
-fun Intent(x0: ColumnScope, x1: Class<MainActivity2>) {
-    TODO("Not yet implemented")
-}
-
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-        Greeting()
+fun InstaLoginPreview() {
+    InstaLogin()
 }
