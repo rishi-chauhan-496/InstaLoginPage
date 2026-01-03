@@ -15,6 +15,7 @@ activity = "1.12.2"
 constraintlayout = "2.2.1"
 benchmarkTraceprocessor = "1.4.1"
 benchmarkTraceprocessorJvm = "1.4.1"
+foundation = "1.10.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +39,7 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-benchmark-traceprocessor = { group = "androidx.benchmark", name = "benchmark-traceprocessor", version.ref = "benchmarkTraceprocessor" }
 androidx-benchmark-traceprocessor-jvm = { group = "androidx.benchmark", name = "benchmark-traceprocessor-jvm", version.ref = "benchmarkTraceprocessorJvm" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
