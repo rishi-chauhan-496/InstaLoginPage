@@ -1,6 +1,7 @@
 package com.example.instalogin
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.compose.ui.platform.LocalContext
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,8 +17,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,13 +31,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.instalogin.ui.theme.InstaLoginTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            InstaLogin()
+            InstaLoginTheme {
+                InstaLogin()
+            }
         }
     }
 }
@@ -56,11 +60,11 @@ fun InstaLogin() {
         //language SelectionList
         Text(
             text = "English (India)",
-            color = Color.LightGray,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 14.sp
         )
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
         //Insta Logo
         Image(
@@ -74,12 +78,12 @@ fun InstaLogin() {
                 )
         )
 
-        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
         //TextField for Username, email address or mobile number
         var username by remember { mutableStateOf("") }
 
-        TextField(
+        OutlinedTextField(
             value = username,
             onValueChange = { username = it },
             placeholder = {
@@ -87,8 +91,8 @@ fun InstaLogin() {
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(56.dp)
-                .border(1.dp, Color.DarkGray, RoundedCornerShape(8.dp))
+                .height(56.dp),
+            shape = RoundedCornerShape(10.dp)
         )
 
 
@@ -97,7 +101,7 @@ fun InstaLogin() {
         //TextField for Password
         var password by remember { mutableStateOf("") }
 
-        TextField(
+        OutlinedTextField(
             value = password,
             onValueChange = { password = it },
             placeholder = {
@@ -105,8 +109,8 @@ fun InstaLogin() {
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(56.dp)
-                .border(1.dp, Color.DarkGray, RoundedCornerShape(8.dp))
+                .height(56.dp),
+            shape = RoundedCornerShape(10.dp)
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -116,9 +120,9 @@ fun InstaLogin() {
             onClick = { },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(48.dp),
+                .height(40.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF0095F6)
+                containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
             Text("Log in", fontSize = 16.sp)
@@ -130,7 +134,7 @@ fun InstaLogin() {
         val context = LocalContext.current
         Text(
             text = "Forgotten password?",
-            color = Color(0xFF0095F6),
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 14.sp,
             modifier = Modifier.clickable {
                 val intent = Intent(context, MainActivity2::class.java)
@@ -144,14 +148,14 @@ fun InstaLogin() {
         Button(
             onClick = { },
             modifier = Modifier.fillMaxWidth(),
-            border = BorderStroke(1.dp, Color(0xFF0095F6)),
+            border = BorderStroke(1.dp,MaterialTheme.colorScheme.primary),
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.background
             )
         ) {
             Text(
                 text = "Create new account",
-                color = Color(0xFF0095F6)
+                color = MaterialTheme.colorScheme.primary
             )
         }
 
@@ -167,21 +171,24 @@ fun InstaLogin() {
             Image(
                 painter = painterResource(id = R.drawable.meta),
                 contentDescription = "Meta logo",
-                modifier = Modifier.size(15.dp)
+                modifier = Modifier.size(20.dp)
             )
 
             Spacer(modifier = Modifier.width(4.dp))
 
             Text(
                 text = "Meta",
-                color = Color.DarkGray,
-                fontSize = 15.sp
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 20.sp
             )
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true
+)
 @Composable
 fun InstaLoginPreview() {
     InstaLogin()

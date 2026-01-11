@@ -22,6 +22,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -38,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.instalogin.ui.theme.InstaLoginTheme
 
 
 class MainActivity2 : ComponentActivity() {
@@ -45,10 +47,13 @@ class MainActivity2 : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ForgottenPasswordPage()
+            InstaLoginTheme {
+                ForgottenPasswordPage()
+            }
         }
     }
 }
+
 
 
 @Composable
@@ -65,8 +70,9 @@ fun ForgottenPasswordPage() {
         val context = LocalContext.current
 
         Text(
-            text = "<--",
+            text = "<-",
             fontSize = 22.sp,
+            color = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.clickable {
                 (context as? Activity)?.finish()
             }
@@ -78,20 +84,21 @@ fun ForgottenPasswordPage() {
         Text(
             text = "Find your account",
             fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
             text = "Enter your email address or username.",
-            color = Color.Gray,
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 14.sp
         )
 
         Text(
             text = "Can't reset your password?",
-            color = Color(0xFF1B74E4),
+            color = MaterialTheme.colorScheme.primary,
             fontSize = 14.sp,
             modifier = Modifier.clickable {
             }
@@ -102,7 +109,8 @@ fun ForgottenPasswordPage() {
         // LoginInfo TextFiled
         var loginInfo by remember { mutableStateOf("") }
 
-        TextField(
+
+        OutlinedTextField(
             value = loginInfo,
             onValueChange = { loginInfo = it },
             placeholder = {
@@ -111,8 +119,8 @@ fun ForgottenPasswordPage() {
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(56.dp)
-                .border(1.dp, Color.Gray, RoundedCornerShape(8.dp))
+                .height(56.dp),
+            shape = RoundedCornerShape(10.dp)
         )
 
         Spacer(modifier = Modifier.height(4.dp))
@@ -120,7 +128,7 @@ fun ForgottenPasswordPage() {
         Text(
             text = "You may receive whatsApp ans SMS notification " +
                 "for security and login purposes",
-            color = Color.Gray
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -132,10 +140,10 @@ fun ForgottenPasswordPage() {
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp),
+                .height(40.dp),
             shape = RoundedCornerShape(25.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF1B74E4)
+                containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
             Text(
@@ -159,7 +167,7 @@ fun ForgottenPasswordPage() {
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "---------------------------------------- OR ------------------------------------------",
+            text = "--------------------------------- OR ----------------------------------",
             color = Color.Gray,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
