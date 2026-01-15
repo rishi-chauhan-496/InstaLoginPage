@@ -2,4 +2,35 @@
     <string name="app_name">instaLogin</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_main2">MainActivity2</string>
+
+    <!-- General -->
+    <string name="language_english_india">English (India)</string>
+    <string name="login">Log in</string>
+    <string name="meta">Meta</string>
+
+    <!-- Login Screen -->
+    <string name="username_hint">Username, email address or mobile number</string>
+    <string name="password_hint">Password</string>
+    <string name="forgotten_password">Forgotten password?</string>
+    <string name="create_new_account">Create new account</string>
+    <string name="instagram_logo">Instagram Logo</string>
+    <string name="meta_logo">Meta logo</string>
+
+    <!-- Forgot Password Screen -->
+    <string name="back_arrow">&lt;-</string>
+    <string name="find_account">Find your account</string>
+    <string name="enter_email_or_username">Enter your email address or username.</string>
+    <string name="cant_reset_password">Cannot reset your password?</string>
+    <string name="email_or_username_hint">Email address or username</string>
+
+    <string name="security_note">
+        You may receive WhatsApp and SMS notifications for security and login purposes
+    </string>
+
+    <string name="continue_">Continue</string>
+    <string name="search_by_mobile">Search by mobile number instead</string>
+    <string name="or_divider">--------------------------------- OR ----------------------------------</string>
+    <string name="login_with_facebook">Log In With Facebook</string>
+
+
 </resources>

@@ -26,8 +26,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+
             InstaLoginTheme {
                 InstaLogin()
             }
@@ -59,7 +60,7 @@ fun InstaLogin() {
 
         //language SelectionList
         Text(
-            text = "English (India)",
+            text = stringResource(R.string.language_english_india),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 14.sp
         )
@@ -69,7 +70,7 @@ fun InstaLogin() {
         //Insta Logo
         Image(
             painter = painterResource(id = R.drawable.instagram),
-            contentDescription = "Instagram Logo",
+            contentDescription = stringResource(R.string.instagram_logo),
             modifier = Modifier
                 .size(60.dp)
                 .border(
@@ -87,7 +88,7 @@ fun InstaLogin() {
             value = username,
             onValueChange = { username = it },
             placeholder = {
-                Text("Username, email address or mobile number")
+                Text(stringResource(R.string.username_hint))
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -105,7 +106,7 @@ fun InstaLogin() {
             value = password,
             onValueChange = { password = it },
             placeholder = {
-                Text("Password")
+                Text(stringResource(R.string.password_hint))
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -125,7 +126,8 @@ fun InstaLogin() {
                 containerColor = MaterialTheme.colorScheme.primary
             )
         ) {
-            Text("Log in", fontSize = 16.sp)
+            Text(text = stringResource(R.string.login))
+
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -133,7 +135,7 @@ fun InstaLogin() {
         //Clickable Text For Forgotten Password
         val context = LocalContext.current
         Text(
-            text = "Forgotten password?",
+            text = stringResource(R.string.forgotten_password),
             color = MaterialTheme.colorScheme.primary,
             fontSize = 14.sp,
             modifier = Modifier.clickable {
@@ -154,7 +156,7 @@ fun InstaLogin() {
             )
         ) {
             Text(
-                text = "Create new account",
+                text = stringResource(R.string.create_new_account),
                 color = MaterialTheme.colorScheme.primary
             )
         }
@@ -170,20 +172,21 @@ fun InstaLogin() {
         ) {
             Image(
                 painter = painterResource(id = R.drawable.meta),
-                contentDescription = "Meta logo",
+                contentDescription = stringResource(R.string.meta_logo),
                 modifier = Modifier.size(20.dp)
             )
 
             Spacer(modifier = Modifier.width(4.dp))
 
             Text(
-                text = "Meta",
+                text = stringResource(R.string.meta),
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 20.sp
             )
         }
     }
 }
+
 
 @Preview(
     uiMode = Configuration.UI_MODE_NIGHT_YES,
