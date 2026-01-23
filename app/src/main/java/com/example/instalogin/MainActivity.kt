@@ -67,15 +67,29 @@ fun MyAppNavHost(navController: NavHostController) {
             // Define the UI for the home screen
             InstaLogin(
                 onForgotPasswordClick = {
-                    navController.navigate(Screen.ForgottenPassword.route)
+                    navController.navigate(Screen.ForgottenPassword1.route)
                 }
             )
         }
-        composable(route = Screen.ForgottenPassword.route) {
+        composable(route = Screen.ForgottenPassword1.route) {
             // Define the UI for the detail screen
-            ForgottenPasswordPage(
+            ForgottenPasswordPage1(
                 onNavigateBack = {
-                    navController.popBackStack() // Or navController.navigateUp()
+                    navController.navigate(Screen.Home.route) // Or navController.navigateUp()
+                },
+                onSearchClick = {
+                    navController.navigate(Screen.ForgottenPassword2.route)
+                }
+            )
+        }
+        composable(route = Screen.ForgottenPassword2.route) {
+            // Define the UI for the detail screen
+            ForgottenPasswordPage2(
+                onNavigateBack = {
+                    navController.navigate(Screen.Home.route) // Or navController.navigateUp()
+                },
+                onSearchClick = {
+                    navController.navigate(Screen.ForgottenPassword1.route)
                 }
             )
         }
@@ -226,9 +240,12 @@ fun InstaLogin(
     }
 }
 
+
+//Forgotten Password Screen (Email or Username)
 @Composable
-fun ForgottenPasswordPage(
-    onNavigateBack: () -> Unit
+fun ForgottenPasswordPage1(
+    onNavigateBack: () -> Unit,
+    onSearchClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -258,8 +275,8 @@ fun ForgottenPasswordPage(
 
         Text(
             text = stringResource(R.string.enter_email_or_username),
-            color = MaterialTheme.colorScheme.primary,
-            fontSize = 14.sp
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            fontSize = 16.sp
         )
 
         Text(
@@ -293,7 +310,8 @@ fun ForgottenPasswordPage(
 
         Text(
             text = stringResource(R.string.security_note),
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            fontSize = 14.sp
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -322,11 +340,13 @@ fun ForgottenPasswordPage(
 
         Text(
             text = stringResource(R.string.search_by_mobile),
-            color = Color(0xFF1B74E4),
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 14.sp,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .clickable {}
+                .clickable {
+                    onSearchClick()
+                }
         )
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -344,7 +364,7 @@ fun ForgottenPasswordPage(
             onClick = {},
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp),
+                .height(40.dp),
             shape = RoundedCornerShape(25.dp)
         ) {
             Image(
@@ -353,11 +373,156 @@ fun ForgottenPasswordPage(
                 modifier = Modifier.size(16.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = stringResource(R.string.login_with_facebook))
+            Text(
+                text = stringResource(R.string.login_with_facebook),
+                fontSize = 18.sp
+            )
         }
     }
 }
 
+
+//Forgotten Password Screen (Mobile No)
+@Composable
+fun ForgottenPasswordPage2(
+    onNavigateBack: () -> Unit,
+    onSearchClick: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(16.dp)
+    ) {
+        Spacer(modifier = Modifier.height(25.dp))
+
+        // Back button
+        BackArrow {
+            onNavigateBack()
+        }
+
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        //Text
+        Text(
+            text = stringResource(R.string.find_account),
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Text(
+            text = stringResource(R.string.enter_mobile_no),
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            fontSize = 18.sp
+        )
+
+        Text(
+            text = stringResource(R.string.cant_reset_password),
+            color = MaterialTheme.colorScheme.primary,
+            fontSize = 14.sp,
+            modifier = Modifier.clickable {
+            }
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // LoginInfo TextFiled
+        var loginInfo by remember { mutableStateOf("") }
+
+
+        OutlinedTextField(
+            value = loginInfo,
+            onValueChange = { loginInfo = it },
+            placeholder = {
+                Text(stringResource(R.string.mobile_no_hint))
+            },
+            singleLine = true,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            shape = RoundedCornerShape(10.dp)
+        )
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        Text(
+            text = stringResource(R.string.security_note),
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            fontSize = 14.sp
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // Continue button
+        Button(
+            onClick = {
+                // handle continue
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp),
+            shape = RoundedCornerShape(25.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            )
+        ) {
+            Text(
+                text = stringResource(R.string.continue_),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Text(
+            text = stringResource(R.string.search_by_email_or_username),
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            fontSize = 14.sp,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .clickable {
+                    onSearchClick()
+                }
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Text(
+            text = stringResource(R.string.or_divider),
+            color = Color.Gray,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // Facebook login
+        OutlinedButton(
+            onClick = {},
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp),
+            shape = RoundedCornerShape(25.dp)
+        ) {
+            Image(
+                painter = painterResource(R.drawable.facebook),
+                contentDescription = "Facebook",
+                modifier = Modifier.size(16.dp)
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = stringResource(R.string.login_with_facebook),
+                fontSize = 18.sp
+            )
+        }
+    }
+}
+
+//Back Arrow UI
 @Composable
 fun BackArrow(onBack: () -> Unit) {
     IconButton(
@@ -378,6 +543,7 @@ fun BackArrow(onBack: () -> Unit) {
 )
 @Composable
 fun InstaLoginPreview() {
-    InstaLogin(onForgotPasswordClick = {})
-//    ForgottenPasswordPage(onNavigateBack = {})
+//    InstaLogin(onForgotPasswordClick = {})
+    ForgottenPasswordPage1(onNavigateBack = {}, onSearchClick = {})
+//    ForgottenPasswordPage2(onNavigateBack = {}, onSearchClick = {})
 }

@@ -22,13 +22,15 @@
     <string name="enter_email_or_username">Enter your email address or username.</string>
     <string name="cant_reset_password">Cannot reset your password?</string>
     <string name="email_or_username_hint">Email address or username</string>
-
+    <string name="enter_mobile_no">Enter your mobile number.</string>
+    <string name="mobile_no_hint">Mobile number</string>
     <string name="security_note">
         You may receive WhatsApp and SMS notifications for security and login purposes
     </string>
 
     <string name="continue_">Continue</string>
     <string name="search_by_mobile">Search by mobile number instead</string>
+    <string name="search_by_email_or_username">Search by email address or username inst...</string>
     <string name="or_divider">--------------------------------- OR ----------------------------------</string>
     <string name="login_with_facebook">Log In With Facebook</string>
 
