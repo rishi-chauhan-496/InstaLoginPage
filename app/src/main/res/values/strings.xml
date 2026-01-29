@@ -2,7 +2,6 @@
     <string name="app_name">instaLogin</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_main2">MainActivity2</string>
-
     <!-- General -->
     <string name="language_english_india">English (India)</string>
     <string name="login">Log in</string>
@@ -30,9 +29,19 @@
 
     <string name="continue_">Continue</string>
     <string name="search_by_mobile">Search by mobile number instead</string>
-    <string name="search_by_email_or_username">Search by email address or username inst...</string>
+    <string name="search_by_email_or_username">Search by email address or username instead</string>
     <string name="or_divider">--------------------------------- OR ----------------------------------</string>
     <string name="login_with_facebook">Log In With Facebook</string>
 
+    <!-- Create New Account Screen -->
+    <string name="what_is_your_no">What\'s your mobile number ?</string>
+    <string name="no_info_note">Enter the mobile number on which you can be contacted. No one will see this on your profile</string>
+    <string name="next">Next</string>
+    <string name="sign_with_email">Sign up with email address</string>
+    <string name="have_account">I already have an account</string>
+    <string name="what_is_your_email">What\'s your email address ?</string>
+    <string name="email_info_note">Enter the email address at which you can be contacted. No one will see this on your profile</string>
+    <string name="email_hint">Email address</string>
+    <string name="sign_with_mobile">Sign up with mobile number</string>
 
 </resources>
