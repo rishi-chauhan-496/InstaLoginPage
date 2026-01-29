@@ -2,10 +2,21 @@ package com.example.instalogin.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+/* ---------- Instagram Brand Colors ---------- */
+val InstaBlue = Color(0xFF3797EF)
+val InstaPurple = Color(0xFF833AB4)
+val InstaPink = Color(0xFFE1306C)
+val InstaOrange = Color(0xFFF77737)
+val InstaYellow = Color(0xFFFCAF45)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+/* ---------- Light Theme ---------- */
+val InstaLightBackground = Color(0xFFFFFFFF)
+val InstaLightSurface = Color(0xFFF5F5F5)
+val InstaLightText = Color(0xFF000000)
+val InstaLightSubText = Color(0xFF737373)
+
+/* ---------- Dark Theme ---------- */
+val InstaDarkBackground = Color(0xFF000000)
+val InstaDarkSurface = Color(0xFF121212)
+val InstaDarkText = Color(0xFFFFFFFF)
+val InstaDarkSubText = Color(0xFFB3B3B3)

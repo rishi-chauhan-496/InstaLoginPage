@@ -11,16 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstaLogin" >
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.InstaLogin" />
-        <activity
-            android:name=".ui.theme.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.InstaLogin" />
+<!--        <activity-->
+<!--            android:name=".MainActivity2"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_main2"-->
+<!--            android:theme="@style/Theme.InstaLogin" />-->
+<!--        <activity-->
+<!--            android:name=".ui.theme.MainActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_main"-->
+<!--            android:theme="@style/Theme.InstaLogin" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true"
