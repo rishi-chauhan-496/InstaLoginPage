@@ -43,6 +43,7 @@ android {
 
 dependencies {
 
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     val nav_version = "2.9.6"
 
     implementation(libs.androidx.core.ktx)
@@ -69,7 +70,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     //Navigation
     implementation("androidx.navigation:navigation-compose:${nav_version}")
-
+    //Icon
     implementation("androidx.compose.material:material-icons-extended")
-
 }
