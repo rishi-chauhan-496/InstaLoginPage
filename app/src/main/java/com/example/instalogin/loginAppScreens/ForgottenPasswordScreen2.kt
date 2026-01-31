@@ -1,4 +1,4 @@
-package com.example.instalogin.appScreens
+package com.example.instalogin.loginAppScreens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

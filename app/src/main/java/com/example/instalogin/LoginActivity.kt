@@ -11,11 +11,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.instalogin.ui.theme.InstaLoginTheme
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.instalogin.appScreens.CreateNewAccount1
-import com.example.instalogin.appScreens.CreateNewAccount2
-import com.example.instalogin.appScreens.ForgottenPasswordPage1
-import com.example.instalogin.appScreens.ForgottenPasswordPage2
-import com.example.instalogin.appScreens.InstaLogin
+import com.example.instalogin.loginAppScreens.CreateNewAccount1
+import com.example.instalogin.loginAppScreens.CreateNewAccount2
+import com.example.instalogin.loginAppScreens.ForgottenPasswordPage1
+import com.example.instalogin.loginAppScreens.ForgottenPasswordPage2
+import com.example.instalogin.loginAppScreens.InstaLogin
 
 
 class MainActivity : ComponentActivity() {

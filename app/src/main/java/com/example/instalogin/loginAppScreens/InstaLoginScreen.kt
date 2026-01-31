@@ -1,4 +1,4 @@
-package com.example.instalogin.appScreens
+package com.example.instalogin.loginAppScreens
 
 import android.app.Activity
 import android.content.Intent
