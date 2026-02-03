@@ -1,4 +1,4 @@
-package com.example.instalogin.appScreens
+package com.example.instalogin.loginAppScreens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.example.instalogin.R
 
 @Composable
-fun CreateNewAccount2(
+fun CreateNewAccount1(
     onNavigateBack: () -> Unit,
     onButtonClick: () -> Unit
 ) {
@@ -36,21 +36,25 @@ fun CreateNewAccount2(
         Spacer(modifier = Modifier.height(24.dp))
 
         AppText(
-            text = stringResource(R.string.what_is_your_email),
+            text = stringResource(R.string.what_is_your_no),
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
 
-        AppText(text = stringResource(R.string.email_info_note))
+        AppText(text = stringResource(R.string.no_info_note))
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        var email by remember { mutableStateOf("") }
+        var mobileNo by remember { mutableStateOf("") }
         AppOutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
+            value = mobileNo,
+            onValueChange = { mobileNo = it },
             hint = stringResource(R.string.mobile_no_hint)
         )
+
+        Spacer(modifier = Modifier.height(4.dp))
+
+        AppText(text = stringResource(R.string.security_note))
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -62,8 +66,10 @@ fun CreateNewAccount2(
         Spacer(modifier = Modifier.height(14.dp))
 
         AppOutlinedButton(
-            text = stringResource(R.string.sign_with_mobile),
+            text = stringResource(R.string.sign_with_email),
             onClick = onButtonClick
         )
+
+
     }
 }

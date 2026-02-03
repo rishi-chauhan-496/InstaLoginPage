@@ -44,4 +44,26 @@
     <string name="email_hint">Email address</string>
     <string name="sign_with_mobile">Sign up with mobile number</string>
 
+    <string name="instagram">Instagram</string>
+
+    <!-- Stories -->
+    <string name="story_1">Your Story</string>
+    <string name="story_2">alex</string>
+    <string name="story_3">john</string>
+    <string name="story_4">emma</string>
+    <string name="story_5">sam</string>
+
+    <!-- Posts -->
+    <string name="post_user_1">rishi</string>
+    <string name="post_title_1">Jetpack Compose</string>
+    <string name="post_likes_1">120</string>
+
+    <string name="post_user_2">alex</string>
+    <string name="post_title_2">Android Dev</string>
+    <string name="post_likes_2">340</string>
+
+    <string name="post_user_3">john</string>
+    <string name="post_title_3">Kotlin all day</string>
+    <string name="post_likes_3">220</string>
+
 </resources>
