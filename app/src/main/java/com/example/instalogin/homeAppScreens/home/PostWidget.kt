@@ -1,4 +1,4 @@
-package com.example.instalogin.homeAppScreens
+package com.example.instalogin.homeAppScreens.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

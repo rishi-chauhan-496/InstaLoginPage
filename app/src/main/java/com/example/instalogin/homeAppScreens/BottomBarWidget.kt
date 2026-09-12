@@ -1,30 +1,51 @@
 package com.example.instalogin.homeAppScreens
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddBox
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.instalogin.BottomNavItem
 
 @Composable
-fun InstagramBottomBar() {
+fun InstagramBottomBar(navController: NavController) {
+
+    val items = listOf(
+        BottomNavItem.Home,
+        BottomNavItem.Search,
+        BottomNavItem.Add,
+        BottomNavItem.Reels,
+        BottomNavItem.Profile
+    )
+
+    val currentRoute =
+        navController.currentBackStackEntryAsState().value?.destination?.route
+
     NavigationBar {
-        listOf(
-            Icons.Default.Home,
-            Icons.Default.Search,
-            Icons.Default.AddBox,
-            Icons.Default.PlayArrow,
-            Icons.Default.Person
-        ).forEach {
+
+        items.forEach { item ->
+
             NavigationBarItem(
-                selected = false,
-                onClick = {},
-                icon = { Icon(it, null) }
+                selected = currentRoute == item.route,
+                onClick = {
+
+                    navController.navigate(item.route) {
+
+                        popUpTo(navController.graph.startDestinationId) {
+                            saveState = true
+                        }
+
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = item.route
+                    )
+                }
             )
         }
     }

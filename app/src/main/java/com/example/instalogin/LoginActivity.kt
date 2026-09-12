@@ -96,13 +96,26 @@ fun MyAppNavHost(navController: NavHostController) {
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun InstaLoginPreview() {
-//    InstaLogin(onForgotPasswordClick = {},onCreateAcButtonClick = {})
-//    ForgottenPasswordPage1(onNavigateBack = {}, onSearchClick = {})
-//    ForgottenPasswordPage2(onNavigateBack = {}, onSearchClick = {})
-//    CreateNewAccount1(onNavigateBack = {}, onButtonClick = {})
-//    CreateNewAccount2(onNavigateBack = {}, onButtonClick = {})
+fun LoginScreenPreview() {
+    InstaLoginTheme {
+        InstaLogin(onForgotPasswordClick = {}, onCreateAcButtonClick = {})
+    }
+}
 
+@Preview(showBackground = true)
+@Composable
+fun ForgottenPassword1Preview() {
+    InstaLoginTheme {
+        ForgottenPasswordPage1(onNavigateBack = {}, onSearchClick = {})
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CreateNewAccount1Preview() {
+    InstaLoginTheme {
+        CreateNewAccount1(onNavigateBack = {}, onButtonClick = {})
+    }
 }

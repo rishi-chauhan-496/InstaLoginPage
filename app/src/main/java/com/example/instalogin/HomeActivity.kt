@@ -13,11 +13,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.instalogin.homeAppScreens.InstagramBottomBar
-import com.example.instalogin.homeAppScreens.InstagramPostItem
-import com.example.instalogin.homeAppScreens.InstagramStories
-import com.example.instalogin.homeAppScreens.InstagramTopBar
+import com.example.instalogin.homeAppScreens.home.InstagramPostItem
+import com.example.instalogin.homeAppScreens.home.InstagramStories
+import com.example.instalogin.homeAppScreens.home.InstagramTopBar
 import com.example.instalogin.ui.theme.InstaLoginTheme
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.instalogin.homeAppScreens.profile.EditProfileButton
+import com.example.instalogin.homeAppScreens.profile.ProfileBioSection
+import com.example.instalogin.homeAppScreens.profile.ProfileHeaderSection
+import com.example.instalogin.homeAppScreens.profile.ProfileTabs
+import com.example.instalogin.homeAppScreens.profile.ProfileTopBar
 
 class MainActivity2 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,13 +33,42 @@ class MainActivity2 : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InstaLoginTheme {
-                InstagramHomeOneComposable()
+                InstagramMainScreen()
             }
         }
     }
 }
 @Composable
-fun InstagramHomeOneComposable() {
+fun InstagramMainScreen() {
+
+    val navController = rememberNavController()
+
+    Scaffold(
+        bottomBar = {
+            InstagramBottomBar(navController)
+        }
+    ) { paddingValues ->
+
+        NavHost(
+            navController = navController,
+            startDestination = BottomNavItem.Home.route,
+            modifier = Modifier.padding(paddingValues)
+        ) {
+
+            composable(BottomNavItem.Home.route) {
+                InstagramHomePage()
+            }
+            composable(BottomNavItem.Profile.route) {
+                InstagramProfilePage()
+            }
+        }
+    }
+}
+
+
+
+@Composable
+fun InstagramHomePage() {
 
     val stories = listOf(
         stringResource(R.string.story_1),
@@ -62,35 +99,65 @@ fun InstagramHomeOneComposable() {
 
 
     Scaffold(
-            topBar = { InstagramTopBar() },
-            bottomBar = { InstagramBottomBar() }
-        ) { paddingValues ->
+        topBar = { InstagramTopBar() }
+    ) { paddingValues ->
 
-            LazyColumn(
-                modifier = Modifier
-                    .padding(paddingValues)
-                    .fillMaxSize()
-            ) {
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+        ) {
 
-                item {
-                    InstagramStories(stories)
-                }
+            item {
+                InstagramStories(stories)
+            }
 
-                items(posts) { post ->
-                    InstagramPostItem(post)
-                }
+            items(posts) { post ->
+                InstagramPostItem(post)
             }
         }
     }
+}
 
 
+@Composable
+fun InstagramProfilePage() {
+
+    Scaffold(
+        topBar = { ProfileTopBar() }
+    ) { paddingValues ->
+
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize()
+        ) {
+
+            item { ProfileHeaderSection() }
+
+            item { ProfileBioSection() }
+
+            item { EditProfileButton() }
+
+            item { ProfileTabs() }
+        }
+    }
+}
 
 
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun HomeScreenPreview() {
     InstaLoginTheme {
-        InstagramHomeOneComposable()
+        InstagramMainScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProfileScreenPreview() {
+    InstaLoginTheme {
+        InstagramProfilePage()
     }
 }

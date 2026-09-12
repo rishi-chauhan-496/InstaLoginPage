@@ -75,4 +75,21 @@
     <string name="post_title_3">कोटलिन पूरे दिन</string>
     <string name="post_likes_3">220</string>
 
+    <!-- Profile -->
+    <string name="profile_username">rishi_123</string>
+    <string name="profile_name">ऋषि चौहान</string>
+    <string name="profile_bio_line1">एंड्रॉइड डेवलपर</string>
+    <string name="profile_bio_line2">जेटपैक कंपोज | कोटलिन | क्लीन आर्किटेक्चर</string>
+
+    <string name="profile_posts">54</string>
+    <string name="profile_followers">1.2K</string>
+    <string name="profile_following">300</string>
+
+    <string name="posts_label">पोस्ट</string>
+    <string name="followers_label">फॉलोअर्स</string>
+    <string name="following_label">फॉलोइंग</string>
+
+    <string name="edit_profile">प्रोफाइल संपादित करें</string>
+
+
 </resources>
